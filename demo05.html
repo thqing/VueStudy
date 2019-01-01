@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Vue生命周期</title>
+		<script src="js/vue.js"></script>
+		
+	</head>
+	<body>
+		<div id="app">
+			{{message}}
+			<button v-on:click="change">单击更新message</button>
+		</div>	
+		
+		<script type="text/javascript">
+			var app = new Vue({
+				el:'#app',
+				data:{
+					message:'Vue的生命周期'
+
+				},
+				methods:{
+					change:function(){
+						this.message = 'hello world!';
+					}
+				},
+				
+				//钩子函数不用卸载methods里
+				created:function(){
+					console.info('Vue对象创建时调用！');
+				},
+				mounted:function(){
+					console.info('Vue对象挂载到DOM元素时调用！');
+				},
+				updated:function(){
+					console.info('data数据被更新的时候执行');
+				}
+			})
+		</script>
+	</body>
+</html>

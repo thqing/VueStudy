@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Class与style绑定</title>
+		<script src="js/vue.js"></script>
+		<style type="text/css">
+			.active{
+				background-color: #0f0;
+			}
+			.error{
+				background-color: #f00;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!-- v-bind 可以缩写，只写冒号即可 -->
+			<p :class="{active:isActive}">我是第一种P标签</p>
+			
+			<!-- active 样式是否能显示，取决于后面的boolean值 -->
+			<!-- 支持三目运算符-->
+			<p v-bind:class="isActive?active:error">{{message}}</p>
+			
+			<!-- 支持数组 -->
+			<p v-bind:class="items">我是P标签，支持数组的class,数组最后一个css会覆盖前面的</p>
+			
+			<p v-bind:style="styleObject">我是P标签，绑定style</p>
+			
+		</div>	
+		
+		<script type="text/javascript">
+			var app = new Vue({
+				el:'#app',
+				data:{
+					message:'Class绑定，我是P标签，三目运算符，不能有花括号',
+					isActive:true,
+					active:'active',
+					error:'error',
+					items:['active','error'],
+					
+					/*  内联样式采用的json格式，而且要使用驼峰命名法 */
+					styleObject:{
+						backgroundColor:'#000fff',
+						fontSize:'20px',
+						color:'#ffffff'
+					}
+				}
+			
+			})
+		</script>
+	</body>
+</html>

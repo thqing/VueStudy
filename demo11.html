@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>AJAX</title>
+		<script src="js/vue.js"></script>
+		<script src="js/axios.js"></script>
+		<!-- https://unpkg.com/axios/dist/axios.min.js -->
+	</head>
+	<body>
+		<!-- 可以用 bootstrap CSS框架 -->
+		<table id="app" cellspacing="1" border="0" style="background-color: #000000;">
+			<tr v-for="item in result" style="background-color: #ffffff; height: 30px;">
+				<td style="width: 100px;">{{item.id}}</td>
+				<td style="width: 100px;">{{item.name}}</td>
+				<td style="width: 100px;">{{item.age}}</td>
+			</tr>
+		</table>
+		
+		<script type="text/javascript">
+			var vue = new Vue({
+				el:"#app",
+				data:{
+					result:[]	//数组!!
+				},
+				created:function(){
+					//通过axios访问远程数据
+					axios.get("data.json").then(function(result){
+						//console.info(typeof(eval(result)));
+						this.result = eval(result.data);	//eval函数,转换为数组
+					}.bind(this));
+				}
+			})
+			
+		</script>
+	</body>
+</html>

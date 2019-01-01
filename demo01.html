@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Vue数据绑定功能</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app" v-bind:title='vueTitle'>
+			{{message}}
+			<br>
+			<p>{{message2}}</p>
+		</div>	
+		
+		<script type="text/javascript">
+			var app = new Vue({
+				el:'#app',
+				data:{
+					message:'Hello Vue!',
+					message2:'this is message2',
+					vueTitle:'Vue data vueTitle'
+				}
+			})
+		</script>
+	</body>
+</html>

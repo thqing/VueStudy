@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>AJAX</title>
+		<script src="js/vue.js"></script>
+		<script src="js/axios.js"></script>
+		<!-- https://unpkg.com/axios/dist/axios.min.js -->
+	</head>
+	<body>
+		<div id="app">
+			{{result}}
+		</div>
+		
+		<script type="text/javascript">
+			var vue = new Vue({
+				el:"#app",
+				data:{
+					result:""
+				},
+				created:function(){
+					//通过axios访问远程数据
+					//涉及axios跨域问题
+					axios.get("data.json").then(function(result){
+						console.info(result);
+						this.result = result.data;
+					}.bind(this));
+				}
+			})
+			
+		</script>
+	</body>
+</html>
